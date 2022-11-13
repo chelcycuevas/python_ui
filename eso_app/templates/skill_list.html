@@ -1,0 +1,35 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Skills</h1>
+  {% if skill_list %}
+
+  <body>
+<div class="container">
+<table class="table table-striped">
+    <thead>
+      <tr>
+		<th>Class</th>
+        <th></th>
+        <th>Skill</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+	{% for skill in skill_list %}
+      <tr>
+        <td>{{skill.clazz}}</td>
+		<td><img src="{{skill.image_url}}"/></td>
+        <td>{{ skill.name }}</td>
+        <td>{{ skill.desc }}</td>
+      </tr>
+	  {% endfor %}
+	</tbody>
+</table>
+</div>
+</body>
+
+  {% else %}
+    <p>No skills have been created yet.</p>
+  {% endif %}
+{% endblock %}

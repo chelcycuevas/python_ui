@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Elder Scrolls Online Build Editor</h1>
+  <p>Welcome to my Elder Scrolls Online web app. It is a humble work in progress. Be gentle!</p>
+
+    <p>You can navigate to the links in the sidebar to find out more information about Elder Scrolls Online and what the different classes and races are, etc. The main purpose of this app is to add build information for your characters.
+    To view existing builds you can click on the 'Builds' link or create one below.</p>
+  <h2>Builds</h2>
+  <p>Create a new build for your character!</p>
+{#  <ul>#}
+{#    <li><strong>Zones:</strong> {{ num_zones }}</li>#}
+{#    <li><strong>Races:</strong> {{ num_races }}</li>#}
+{#    <li><strong>Classes:</strong> {{ num_classes }}</li>#}
+{#    <li><strong>My Characters</strong> {{ num_instances_available }}</li>#}
+{#  </ul>#}
+
+    <form method="post" action="">
+        {% csrf_token %}
+        <table>
+            {{form}}
+        </table>
+        <input type="submit" value="Submit Build"/>
+    </form>
+
+
+{% endblock %}

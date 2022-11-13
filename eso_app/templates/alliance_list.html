@@ -1,0 +1,68 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Alliances</h1>
+  {% if alliance_list %}
+
+      <body>
+<div class="container">
+
+<p>The first thing you have to do when you create a character is select an alliance. This isnt going to impact your character ability in any way;
+it only affects the Player-Vs-Player game mode. However, if you did not purchase the 'Any Alliance, Any Race' package in the Crown Store for ESO,
+you will be limited to the races available for that particular alliance once you choose one.</p>
+
+<p>Most days when I queue for my home campaign in Cyrodiil for PVP, the battlefield looks like it is below. For PVP there are 3 options:
+    <ul><b>Battlegrounds</b></ul>
+    <ul><b>Imperial City</b></ul>
+    <ul><b>Cyrodiil</b></ul>
+</p>
+
+<p>Battlegrounds is a four man group that competes in different games, such as:
+    <ul><b>Chaos Ball</b> -- holding onto a ball that slowly deals damage to you and kills you overtime.</ul>
+    <ul><b>Domination</b> -- flags appear on the map and your team must control the flag zone.</ul>
+    <ul><b>Crazy King</b> -- same thing as Domination really; you run to the flag and battle to the death. Whoever is left standing takes control.</ul>
+    <ul><b>Capture the Relic</b> -- each team has a relic you must steal and return to your own home keep before the other team takes yours. RUN and dont die!</ul>
+    <ul><b>Deathmatch</b> -- the group with the highest number of kills wins. (everybody's favorite)</ul>
+    </p>
+
+<p>Imperial City is flooded with hidden ganker nightblades. Good luck surviving unless you have detection potions or skills, but even then,
+    you will likely be getting killed from behind. I dont like IC much because of this. I prefer up close and personal combat without hiding.</p>
+
+<p>Cyrodiil is the main PVP zone where your alliance competes with the other two for territory. You have to ride your mount all
+over the place and this can be time consuming. It is not as enjoyable unless you are in a large group, then it is possibly the funnest
+content in the game. If you queue for Cyrodiil, make sure you have selected a campaign as your home campaign in order to get points allocated
+for your efforts. You can do this by right clicking on the campaign then selecting 'Home'. Once you reach rank 1 for your campaign period, you will receive 50 transmute cyrstals when the campaign ends. I didnt
+know about this until recently and wish someone had told me earlier. Transmute crystals are extremely valuable because they allow you
+to change the trait on your weapons or armor, improving its effectiveness.</p>
+
+    <center><img src="https://eso-hub.com/storage/guides/OHpdmUmNY1ebCE6kDkLld3nylClkTADdqm3u1ZM0.jpg"/></center>
+
+	{% for alliance in alliance_list %}
+   <table class="table table-striped">
+    <thead>
+      <tr>
+          <th><b>{{ alliance.name }}</b></th>
+        <th>Description</th>
+          <th>Leader</th>
+          <th>Color</th>
+          <th>Motto</th>
+      </tr>
+    </thead>
+      <tr>
+        <td><img src="{{ alliance.image_url }}" width="700px" height="400px"/></td>
+        <td>{{ alliance.desc }}</td>
+      <td>{{ alliance.leader }}</td>
+      <td style="color:{{ alliance.color }}">{{ alliance.color }}</td>
+      <td>{{ alliance.motto }}</td>
+      </tr>
+	  {% endfor %}
+	</tbody>
+</table>
+</div>
+</body>
+
+
+  {% else %}
+    <p>No alliances have been created yet.</p>
+  {% endif %}
+{% endblock %}

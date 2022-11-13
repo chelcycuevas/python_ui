@@ -1,0 +1,30 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Build: {{ build.name }}</h1>
+
+    {% if build.desc %}
+        <p><i>Description: {{ build.desc }}</i></p>
+    {% endif %}
+
+  <p><strong>Class:</strong> <a href="">{{ build.get_clazz_display }}</a></p>
+  <p><strong>Race:</strong> {{ build.get_race_display }}</p>
+  <p><strong>Role:</strong> {{ build.get_role_display }}</p>
+  <p><strong>Gender:</strong> {{ build.get_gender_display }}</p>
+  <p><strong>Alliance:</strong> {{ build.get_alliance_display }}</p>
+
+     {% if build.curse %}
+         <p><strong>Curse:</strong> {{ build.get_curse_display }}</p>
+     {% endif %}
+
+  <p><strong>Play Style:</strong> {{ build.get_playstyle_display }}</p>
+  <p><strong>Mundus:</strong> {{ build.get_mundus_display }}</p>
+  <p><strong>House:</strong> {{ build.house }}</p>
+  <p><strong>Mount:</strong> {{ build.mount }}</p>
+
+
+    {% if build.image.size > 0 %}
+    <img src="{{build.image.url}}" alt="{{ build.name }}" width="250" height="250">
+    {% endif %}
+
+{% endblock %}

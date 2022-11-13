@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Builds</h1>
+  {% if build_list %}
+  <ul>
+    {% for build in build_list %}
+      <li>
+        <a href="{{ build.get_absolute_url }}">{{ build.name }}</a> ({{build.desc}})
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>No builds have been created yet.</p>
+  {% endif %}
+{% endblock %}

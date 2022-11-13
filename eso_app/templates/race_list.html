@@ -1,0 +1,35 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Races</h1>
+  {% if race_list %}
+
+       <body>
+<div class="container">
+	{% for race in race_list %}
+   <table class="table table-striped">
+    <thead>
+      <tr>
+		<th>{{ race.name }}</th>
+        <th>Description</th>
+          <th>Alliance</th>
+      </tr>
+    </thead>
+      <tr>
+        <td><img src="{{race.image_url}}" width="700px" height="400px"/></td>
+        <td>{{ race.desc }}</td>
+      <td>{{ race.alliance }}</td>
+      </tr>
+	  {% endfor %}
+	</tbody>
+</table>
+</div>
+</body>
+
+
+
+
+  {% else %}
+    <p>No races have been created yet.</p>
+  {% endif %}
+{% endblock %}

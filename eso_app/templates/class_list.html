@@ -1,0 +1,31 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Classes</h1>
+  {% if class_list %}
+
+  <body>
+<div class="container">
+	{% for class in class_list %}
+   <table class="table table-striped">
+    <thead>
+      <tr>
+		<th>{{ class.name }}</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+      <tr>
+        <td><img src="{{class.image_url}}" width="700px" height="400px"/></td>
+        <td>{{ class.desc }}</td>
+      </tr>
+	  {% endfor %}
+	</tbody>
+</table>
+</div>
+</body>
+
+
+  {% else %}
+    <p>No classes have been created yet.</p>
+  {% endif %}
+{% endblock %}
