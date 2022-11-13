@@ -5,7 +5,7 @@ from django.urls import reverse
 
 # Create your models here.
 
-class GEAR(models.Model):
+class Gear(models.Model):
     SLOT = (
         ('HEAD', 'Head'),
         ('SHOULDERS', 'Shoulders'),
