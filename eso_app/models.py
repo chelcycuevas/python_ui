@@ -31,8 +31,33 @@ class Gear(models.Model):
     trait = models.CharField(max_length=100, default="")
     enchantment = models.CharField(max_length=100, default="")
 
+
+class Classes(models.Model):
+    name = models.CharField(max_length=200)
+    desc = models.TextField(max_length=1000, blank=True, verbose_name='Description')
+    image_url = models.URLField(default="")
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('class-detail', args=[str(self.id)])
+
+
+class Skills(models.Model):
+    name = models.CharField(max_length=200)
+    desc = models.TextField(max_length=1000, blank=True, verbose_name='Description')
+    clazz = models.ForeignKey(Classes, db_column='class', on_delete=models.CASCADE, verbose_name="class")
+    image_url = models.URLField(default="")
+
     class Meta:
-        abstract = True
+        ordering = ['clazz']
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('skill-detail', args=[str(self.id)])
 
 
 class BuildEditor(models.Model):
@@ -71,6 +96,30 @@ class BuildEditor(models.Model):
         ('NB', 'Nightblade')
     )
     clazz = models.CharField(max_length=30, choices=CLASSES, db_column='class', verbose_name='class')
+    head = models.CharField(max_length=100, blank=True, default="")
+    shoulders = models.CharField(max_length=100, blank=True, default="")
+    chest = models.CharField(max_length=100, blank=True, default="")
+    legs = models.CharField(max_length=100, blank=True, default="")
+    hands = models.CharField(max_length=100, blank=True, default="")
+    waist = models.CharField(max_length=100, blank=True, default="")
+    feet = models.CharField(max_length=100, blank=True, default="")
+    necklace = models.CharField(max_length=100, blank=True, default="")
+    ring_one = models.CharField(max_length=100, blank=True, default="")
+    ring_two = models.CharField(max_length=100, blank=True, default="")
+    frontbar_weapon = models.CharField(max_length=100, blank=True, default="")
+    frontbar_skill_one = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, default="", related_name='+')
+    frontbar_skill_two = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, default="", related_name='+')
+    frontbar_skill_three = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, default="", related_name='+')
+    frontbar_skill_four = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, default="", related_name='+')
+    frontbar_skill_five = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, default="", related_name='+')
+    frontbar_ultimate = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, default="", related_name='+')
+    backbar_weapon = models.CharField(max_length=100, blank=True, default="")
+    backbar_skill_one = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, default="", related_name='+')
+    backbar_skill_two = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, default="", related_name='+')
+    backbar_skill_three = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, default="", related_name='+')
+    backbar_skill_four = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, default="", related_name='+')
+    backbar_skill_five = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, default="", related_name='+')
+    backbar_ultimate = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, default="", related_name='+')
     ROLES = (
         ('T', 'Tank'),
         ('D', 'Damage Dealer'),
@@ -111,6 +160,7 @@ class BuildEditor(models.Model):
                                              verbose_name="Stamina")
     house = models.CharField(max_length=500)
     mount = models.CharField(max_length=500)
+    video = models.URLField(default="", blank=True)
     image = models.ImageField(upload_to='images/% Y/% m/% d/', default="default.jpg", blank=True)
 
     class Meta:
@@ -262,36 +312,8 @@ class Roles(models.Model):
         return self.name
 
 
-class Classes(models.Model):
-    name = models.CharField(max_length=200)
-    desc = models.TextField(max_length=1000, blank=True, verbose_name='Description')
-    image_url = models.URLField(default="")
-
-    def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse('class-detail', args=[str(self.id)])
-
-
 class Characters(models.Model):
     name = models.CharField(max_length=200)
     alliance = models.ForeignKey(Alliances, on_delete=models.CASCADE)
     clazz = models.ForeignKey(Classes, db_column='class', on_delete=models.CASCADE, verbose_name="class")
     race = models.ForeignKey(Races, on_delete=models.CASCADE)
-
-
-class Skills(models.Model):
-    name = models.CharField(max_length=200)
-    desc = models.TextField(max_length=1000, blank=True, verbose_name='Description')
-    clazz = models.ForeignKey(Classes, db_column='class', on_delete=models.CASCADE, verbose_name="class")
-    image_url = models.URLField(default="")
-
-    class Meta:
-        ordering = ['clazz']
-
-    def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse('skill-detail', args=[str(self.id)])

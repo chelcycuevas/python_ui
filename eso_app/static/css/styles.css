@@ -3,3 +3,8 @@
   padding: 0;
   list-style: none;
 }
+
+.p {
+  padding: 35px;
+  margin: 35px;
+}
