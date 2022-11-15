@@ -16,4 +16,5 @@ admin.site.register(Skills)
 admin.site.register(Arenas)
 admin.site.register(Characters)
 admin.site.register(BuildEditor)
+admin.site.register(Weapon)
 

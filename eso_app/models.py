@@ -44,10 +44,19 @@ class Classes(models.Model):
         return reverse('class-detail', args=[str(self.id)])
 
 
+class Weapon(models.Model):
+    name = models.CharField(max_length=200, blank=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Skills(models.Model):
     name = models.CharField(max_length=200)
     desc = models.TextField(max_length=1000, blank=True, verbose_name='Description')
-    clazz = models.ForeignKey(Classes, db_column='class', on_delete=models.CASCADE, verbose_name="class")
+    clazz = models.ForeignKey(Classes, db_column='class', on_delete=models.CASCADE, verbose_name="class", blank=True,
+                              null=True)
+    weapon = models.ForeignKey(Weapon, on_delete=models.CASCADE, blank=True, null=True)
     image_url = models.URLField(default="")
 
     class Meta:
@@ -107,19 +116,19 @@ class BuildEditor(models.Model):
     ring_one = models.CharField(max_length=100, blank=True, default="")
     ring_two = models.CharField(max_length=100, blank=True, default="")
     frontbar_weapon = models.CharField(max_length=100, blank=True, default="")
-    frontbar_skill_one = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, default="", related_name='+')
-    frontbar_skill_two = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, default="", related_name='+')
-    frontbar_skill_three = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, default="", related_name='+')
-    frontbar_skill_four = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, default="", related_name='+')
-    frontbar_skill_five = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, default="", related_name='+')
-    frontbar_ultimate = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, default="", related_name='+')
+    frontbar_skill_one = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, null=True, default="", related_name='+')
+    frontbar_skill_two = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, null=True, default="", related_name='+')
+    frontbar_skill_three = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, null=True, default="", related_name='+')
+    frontbar_skill_four = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, null=True, default="", related_name='+')
+    frontbar_skill_five = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, null=True, default="", related_name='+')
+    frontbar_ultimate = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, null=True, default="", related_name='+')
     backbar_weapon = models.CharField(max_length=100, blank=True, default="")
-    backbar_skill_one = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, default="", related_name='+')
-    backbar_skill_two = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, default="", related_name='+')
-    backbar_skill_three = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, default="", related_name='+')
-    backbar_skill_four = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, default="", related_name='+')
-    backbar_skill_five = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, default="", related_name='+')
-    backbar_ultimate = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, default="", related_name='+')
+    backbar_skill_one = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, null=True,default="", related_name='+')
+    backbar_skill_two = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, null=True, default="", related_name='+')
+    backbar_skill_three = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, null=True, default="", related_name='+')
+    backbar_skill_four = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, null=True, default="", related_name='+')
+    backbar_skill_five = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, null=True, default="", related_name='+')
+    backbar_ultimate = models.ForeignKey(Skills, on_delete=models.CASCADE, blank=True, null=True, default="", related_name='+')
     ROLES = (
         ('T', 'Tank'),
         ('D', 'Damage Dealer'),

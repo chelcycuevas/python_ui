@@ -2,23 +2,21 @@
 
 {% block content %}
   <h1>Elder Scrolls Online Build Editor</h1>
-  <p>Welcome to my Elder Scrolls Online web app. It is a humble work in progress.</p>
+  <p>Welcome to my Elder Scrolls Online web app. This is my first Django project. It is a humble work in progress.</p>
 
     <img src="https://y.yarn.co/31db92b8-f2af-4bbf-ac23-0a686fe9d5b8_text.gif"/>
 
-    <p style="margin-top:30px;margin-bottom:30px">
-        You can navigate to the links in the sidebar to find out more information about Elder Scrolls Online
-        and what the different classes and races are, etc. The main purpose of this app is to add build
-        information for your characters. To view existing builds you can click on the 'Builds' link or create one below.
+    <p style="margin-top:30px">
+        I started playing Elder Scrolls Online in 2017 and slowly fell in love with it. I was never interested in gaming before and was actually quite critical of people
+        that wasted time with it, but after watching some relatives play Skyrim, I really liked the content and became curious. Five years later and look at me -- hooked.
+        As the saying goes, "I was initially planning on being a casual fan but then I thought, why not just let it consume my soul instead?".</p>
+
+    <p>This site will provide my thoughts on the different classes, races, and content available in the game.
+        You can navigate to the links in the sidebar to find out more information about Elder Scrolls Online, or
+        you can add a build that you have loved for a character you play. To view existing builds you can click on the 'Builds' link or create one below.
     </p>
   <h2>Builds</h2>
   <p>Create a new build for your character!</p>
-{#  <ul>#}
-{#    <li><strong>Zones:</strong> {{ num_zones }}</li>#}
-{#    <li><strong>Races:</strong> {{ num_races }}</li>#}
-{#    <li><strong>Classes:</strong> {{ num_classes }}</li>#}
-{#    <li><strong>My Characters</strong> {{ num_instances_available }}</li>#}
-{#  </ul>#}
 
     <form method="post" action="">
         {% csrf_token %}

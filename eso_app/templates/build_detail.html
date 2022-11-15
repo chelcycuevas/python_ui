@@ -7,24 +7,100 @@
         <p><i>Description: {{ build.desc }}</i></p>
     {% endif %}
 
-  <p><strong>Class:</strong> <a href="">{{ build.get_clazz_display }}</a></p>
+  <p><strong>Class:</strong> {{ build.get_clazz_display }}</p>
   <p><strong>Race:</strong> {{ build.get_race_display }}</p>
-  <p><strong>Role:</strong> {{ build.get_role_display }}</p>
-  <p><strong>Gender:</strong> {{ build.get_gender_display }}</p>
-  <p><strong>Alliance:</strong> {{ build.get_alliance_display }}</p>
 
-     {% if build.curse %}
-         <p><strong>Curse:</strong> {{ build.get_curse_display }}</p>
-     {% endif %}
+<h3>Skills</h3>
+<div class="container">
+   <table class="table table-striped">
+    <thead>
+      <tr>
+          <th> </th> <!-- empty space-->
+          <th>Slot 1</th>
+          <th>Slot 2</th>
+          <th>Slot 3</th>
+          <th>Slot 4</th>
+          <th>Slot 5</th>
+          <th>Ultimate</th>
+      </tr>
+    </thead>
+      <tr>
+          <td>{{ build.frontbar_weapon }}</td>
+          <td><img src="{{build.frontbar_skill_one.image_url}}" title="{{ build.frontbar_skill_one.name }}"/></td>
+          <td><img src="{{build.frontbar_skill_two.image_url}}" title="{{ build.frontbar_skill_two.name }}"/></td>
+          <td><img src="{{build.frontbar_skill_three.image_url}}" title="{{ build.frontbar_skill_three.name }}"/></td>
+          <td><img src="{{build.frontbar_skill_four.image_url}}" title="{{ build.frontbar_skill_four.name }}"/></td>
+          <td><img src="{{build.frontbar_skill_five.image_url}}" title="{{ build.frontbar_skill_five.name }}"/></td>
+          <td><img src="{{build.frontbar_ultimate.image_url}}" title="{{ build.frontbar_ultimate.name }}"/></td>
+      </tr>
+       <tr>
+           <td>{{ build.backbar_weapon }}</td>
+           <td><img src="{{build.backbar_skill_one.image_url}}" title="{{ build.backbar_skill_one.name }}"/></td>
+           <td><img src="{{build.backbar_skill_two.image_url}}" title="{{ build.backbar_skill_two.name }}"/></td>
+           <td><img src="{{build.backbar_skill_three.image_url}}" title="{{ build.backbar_skill_three.name }}"/></td>
+           <td><img src="{{build.backbar_skill_four.image_url}}" title="{{ build.backbar_skill_four.name }}"/></td>
+           <td><img src="{{build.backbar_skill_five.image_url}}" title="{{ build.backbar_skill_five.name }}"/></td>
+           <td><img src="{{build.backbar_ultimate.image_url}}" title="{{ build.backbar_ultimate.name }}"/></td>
+      </tr>
+	</tbody>
+</table>
+</div>
 
-  <p><strong>Play Style:</strong> {{ build.get_playstyle_display }}</p>
-  <p><strong>Mundus:</strong> {{ build.get_mundus_display }}</p>
-  <p><strong>House:</strong> {{ build.house }}</p>
-  <p><strong>Mount:</strong> {{ build.mount }}</p>
+<h3>Gear</h3>
+    <div class="container">
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Head</th>
+        <th>Shoulders</th>
+        <th>Chest</th>
+        <th>Hands</th>
+        <th>Waist</th>
+        <th>Legs</th>
+        <th>Feet</th>
+        <th>Necklace</th>
+        <th>Ring 1</th>
+        <th>Ring 2</th>
+    </tr>
+    </thead>
+    <tr>
+        <td>{{ build.head }}</td>
+        <td>{{ build.shoulders }}</td>
+        <td>{{ build.chest }}</td>
+        <td>{{ build.hands }}</td>
+        <td>{{ build.waist }}</td>
+        <td>{{ build.legs }}</td>
+        <td>{{ build.feet }}</td>
+        <td>{{ build.necklace }}</td>
+        <td>{{ build.ring_one }}</td>
+        <td>{{ build.ring_two }}</td>
+    </tr>
+</table>
+</div>
 
+    <div style="margin-bottom:30px">
+    {% if build.video %}
+        <a href="{{ build.video }}">Click here to watch a video of my build on YouTube!</a>
+    {% endif %}
+    </div>
 
     {% if build.image.size > 0 %}
-    <img src="{{build.image.url}}" alt="{{ build.name }}" width="250" height="250">
+        <img src="{{build.image.url}}" alt="{{ build.name }}" width="700" height="650">
     {% endif %}
+
+
+    <p><strong>Role:</strong> {{ build.get_role_display }}</p>
+    <p><strong>Gender:</strong> {{ build.get_gender_display }}</p>
+    <p><strong>Alliance:</strong> {{ build.get_alliance_display }}</p>
+
+
+    {% if build.curse %}
+        <p><strong>Curse:</strong> {{ build.get_curse_display }}</p>
+    {% endif %}
+
+    <p><strong>Play Style:</strong> {{ build.get_playstyle_display }}</p>
+    <p><strong>Mundus:</strong> {{ build.get_mundus_display }}</p>
+    <p><strong>House:</strong> {{ build.house }}</p>
+    <p><strong>Mount:</strong> {{ build.mount }}</p>
 
 {% endblock %}
